@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Recursive circles</title>
+  <script type="text/javascript" src="bin/assets/js/recursive_circles.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var fractal = new RecursiveCirclesFractal();
+  </script>
+
+  <br/>
+
+  <script type="text/javascript">
+    function applyControls() {
+        var ox = origin_x.value;
+        var oy = origin_y.value;
+        var s = zoom.value;
+        var iter = iterations.value;
+        console.log(ox, oy, s, iter);
+        Fractal.prototype.center_r = Number(ox);
+        Fractal.prototype.center_i = Number(oy);
+        Fractal.prototype.resolution = Number(s);
+        Fractal.prototype.maxIterations = Number(iter);
+
+        fractal.drawFractal();
+    }
+  </script>
+ 
+  <form id="controls">
+    <!-- TODO: enforce Level.MAX_AUTHORNAME_LENGTH -->
+    Center: <input type="number" id="origin_x" value="0" /> <input type="number" id="origin_y" value="0"/><br/>
+    Zoom: <input type="number" id="zoom" value="150" /><br/>
+    Iterations: <input type="number" id="iterations" value="25" /><br/>
+    <button type="button" onclick="applyControls()">Go!</button>
+  </form>
+
+
+  <div id="footer">
+  <p>Initial code by Helain Schoonjans (<a href="https://github.com/HelainSchoonjans/recursive_circles">repo</a>)</p>
+  </div>
+
+</body>
+</html>
